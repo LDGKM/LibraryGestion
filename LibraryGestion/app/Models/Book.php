@@ -22,16 +22,12 @@ class Book extends Model
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class)
-                    ->withTimestamps()
-                    ->withPivot('order')
-                    ->wherePivot('active', true);
+                    ->withTimestamps();
     }
 
     public function authors(): BelongsToMany
     {
         return $this->belongsToMany(Author::class)
-                    ->withTimestamps()
-                    ->withPivot('order')
-                    ->wherePivot('active', true);
+                    ->withTimestamps();
     }
 }

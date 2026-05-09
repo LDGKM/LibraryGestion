@@ -20,7 +20,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=>fake()->sentence(),
+            'name'=>fake()->word(),
             'slug'=>fake()->sentence(10),
             'description'=>fake()->paragraph(3) 
         ];

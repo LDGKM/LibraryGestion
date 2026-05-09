@@ -11,7 +11,7 @@ class AuthorRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,13 +22,13 @@ class AuthorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name'=>'required|string|min:3|max:255' ,
-            'last_name'=>'required|string|min:3|max:255' ,
-            'bio'=>'required|string|min:3|max:255' ,
-            'birth_date'=>'required|date|before:today',
-            'death_date'=>'required|date|before:today',
-            'nationalite'=>'required|string|min:3|max:255',
-            'photo_path'=>'required|string|min:3|max:255'
+            'first_name'=> 'required|string|min:3|max:255',
+            'last_name'=> 'required|string|min:3|max:255',
+            'bio'=> 'required|string|min:3',
+            'birth_date'=> 'required|date|before:today',
+            'death_date'=> 'required|date|before:today',
+            'nationalite'=> 'required|string|min:3|max:255',
+            'photo_path'=> 'required|string|min:3|max:255'
         ];
     }
 }

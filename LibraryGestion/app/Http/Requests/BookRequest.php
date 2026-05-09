@@ -11,7 +11,7 @@ class BookRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,10 +24,14 @@ class BookRequest extends FormRequest
         return [
         'titre'=>'required|string|min:3|max:255',
         'description'=>'required|string|min:3|max:255',
-        'annee_de_publication'=>'required|date_format:Y|before_or_equal:'.date('Y'),
-        'isbn'=>'required|string|min:13|size:13',
+        'annee_de_publication'=>'required|integer|min:1450|max:'.date('Y'),
+        'isbn'=>'required|string|size:13',
         'nb_exemp'=>'required|integer|min:1|max:100',
-        'image'=>'required|string|min:3|max:255'
+        'image'=>'required|string|min:3|max:255',
+        'categories' => 'required|array',
+        'categories.*' => 'exists:categories,id',
+        'authors'=>'required|string'
+
         ];
     }
 }

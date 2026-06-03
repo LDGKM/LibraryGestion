@@ -17,7 +17,9 @@ return new class extends Migration
             $table->text('description');
             $table->year('annee_de_publication');
             $table->string('isbn');
-            $table->integer('nb_exemp');
+            $table->integer('nb_exemp_dispo');
+            $table->integer('nb_exemp_total');
+            $table->decimal('price',8,2);
             $table->string('image');
             $table->timestamps();
         });

@@ -18,8 +18,13 @@
 	<label>ISBN</label>
 	<p>{{ $book->isbn }}</p>
 
-	<label>Nom d'exemplaire</label>
-	<p>{{ $book->nb_exemp }}</p>
+	@if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isSuperAdmin()))
+	<label>Nom d'exemplaire disponibles</label>
+	<p>{{ $book->nb_exemp_dispo}}</p>
+
+	<label>Nom d'exemplaire total</label>
+	<p>{{ $book->nb_exemp_total}}</p>
+	@endif
 
 	<label>Image</label>
 	<p>{{ $book->image }}</p>

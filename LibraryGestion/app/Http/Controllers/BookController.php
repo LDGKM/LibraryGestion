@@ -195,4 +195,13 @@ class BookController extends Controller
         return view('librarygestion.book.index',compact('books'));
     }
 
+    public function borrow($id)
+    {
+        $books=Book::with('categories')->with('authors');
+        $book=$books->findOrFail($id);
+
+        session(['book'=>$book]);
+        return redirect()->route('borrow.index');
+    }
+
 }

@@ -6,7 +6,12 @@
 	<title>Accueil</title>
 </head>
 <body>
-	<h1>Bienvenue sur la plateforme de notre Librairie</h1>
-	<a href="{{route('book.index')}}">Accéder à notre librairie</a>
+	@if(!auth()->check())<h1>Bienvenue sur la plateforme de notre Librairie</h1>@endif
+	@include('librarygestion.book.index')
+
+	@if(!auth()->check())
+	<a href="{{route('login')}}"><button>Se connecter</button></a>
+	<a href="{{route('register')}}"><button>S'inscrire</button></a>
+	@endif
 </body>
 </html>

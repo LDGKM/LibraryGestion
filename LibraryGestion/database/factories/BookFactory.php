@@ -19,12 +19,15 @@ class BookFactory extends Factory
     protected $model=Book::class;
     public function definition(): array
     {
+        $nb_exemp=fake()->numberBetween(1, 100);
         return [
             'titre'=>fake()->sentence(),
             'description'=>fake()->paragraph(3) ,
             'annee_de_publication'=>fake()->year(),
             'isbn'=>fake()->isbn13(),
-            'nb_exemp'=>fake()->numberBetween(1, 100),
+            'nb_exemp_dispo'=>$nb_exemp,
+            'nb_exemp_total'=>$nb_exemp,
+            'price' => fake()->randomFloat(2, 1, 200000),
             'image'=>fake()->url()
         ];
     }

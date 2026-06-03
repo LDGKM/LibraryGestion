@@ -4,6 +4,10 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Jobs\ProcessPendingLoansJob;
+use App\Jobs\CheckOverdueLoansJob;
+use App\Jobs\ProcessPenalityLoansJob;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -12,7 +16,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->job(new ProcessPendingLoansJob)->everyMinute();
+        $schedule->job(new CheckOverdueLoansJob)->everyMinute();
+        $schedule->job(new ProcessPenalityLoansJob)->dailyAt('00:00');
+
     }
 
     /**
